@@ -1,0 +1,2 @@
+-- TODO: DROP DATABASE IF EXISTS db_name;
+-- TODO: CREATE DATABASE db_name;
