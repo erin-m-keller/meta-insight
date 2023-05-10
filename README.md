@@ -49,6 +49,7 @@
   ## The Team Tasks 
 
   // TODO: add team tasks
+  // Testing the read me - KR
 
   ## Outside Resources
 
