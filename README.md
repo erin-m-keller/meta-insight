@@ -48,7 +48,8 @@
 
   ## The Team Tasks 
 
-  // TODO: add team tasks
+  // TODO: add team tasks  
+  // Add Commit Testing require review
 
   ## Outside Resources
 
