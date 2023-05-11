@@ -1,11 +1,18 @@
 const router = require("express").Router();
-const { Game, User, Gamereview } = require("../../models");
+const {
+  // Game,
+  User,
+  Gamereview,
+} = require("../../models");
 
 // GET all gameReviews
 router.get("/", async (req, res) => {
   try {
     const gamereviewData = await Gamereview.findAll({
-      include: [{ model: User }, { model: Game }],
+      include: [
+        { model: User },
+        // { model: Game }
+      ],
     });
     res.status(200).json(gamereviewData);
   } catch (err) {
@@ -18,7 +25,7 @@ router.post("/", async (req, res) => {
     const gamereviewData = await Gamereview.create({
       rating: req.body.rating,
       description: req.body.description,
-      game_id: req.body.game_id,
+      // game_id: req.body.game_id,
       user_id: req.body.user_id,
     });
     res.status(200).json(gamereviewData);
