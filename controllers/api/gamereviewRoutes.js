@@ -13,15 +13,15 @@ const gamereviewRouter = require("express").Router();
 //   }
 // });
 
-
+// will be adding withAuth helper in different branch
 gamereviewRouter.post('/', async (req, res) => {
     try {
-      const newBlogpost = await Blogpost.create({
+      const newGamereview = await newGamereview.create({
         ...req.body,
         user_id: req.session.user_id,
       });
   
-      res.status(200).json(newBlogpost);
+      res.status(200).json(newGamereview);
     } catch (err) {
       res.status(400).json(err);
     }
