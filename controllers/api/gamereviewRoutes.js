@@ -1,6 +1,6 @@
 // import express router
 const gamereviewRouter = require("express").Router();
-
+const Gamereview = require('../../models/Gamereview')
 // gamereviewRouter.get("/", async (req, res) => {
 //   // create route
 //   try {
@@ -16,7 +16,7 @@ const gamereviewRouter = require("express").Router();
 // will be adding withAuth helper in different branch
 gamereviewRouter.post('/', async (req, res) => {
     try {
-      const newGamereview = await newGamereview.create({
+      const newGamereview = await Gamereview.create({
         ...req.body,
         user_id: req.session.user_id,
       });
