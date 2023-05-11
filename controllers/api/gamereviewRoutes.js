@@ -13,4 +13,20 @@ const gamereviewRouter = require("express").Router();
 //   }
 // });
 
+
+gamereviewRouter.post('/', async (req, res) => {
+    try {
+      const newBlogpost = await Blogpost.create({
+        ...req.body,
+        user_id: req.session.user_id,
+      });
+  
+      res.status(200).json(newBlogpost);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
+
+
+
 module.exports = gamereviewRouter; // export gamereview router
