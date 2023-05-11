@@ -1,3 +1,5 @@
+const apiKey = process.env.API_KEY;
+
 const router = require("express").Router();
 const { Game, User, Gamereview } = require("../../models");
 
