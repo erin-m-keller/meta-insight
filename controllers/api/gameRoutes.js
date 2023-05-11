@@ -15,6 +15,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Fetch call
+router.get("/games", async (req, res) => {
+  try {
+    const gameData = await fetch('https://api.rawg.io/v1/games', {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+      },
+    });
+    const games = await gameData.json();
+    res.status(200).json(games);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Add a new Game Review
 router.post("/", async (req, res) => {
   try {
