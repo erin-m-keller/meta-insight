@@ -25,6 +25,14 @@ Gamereview.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
+    // will add back in once game model is created
+    //   game_id: {
+    //     type: DataTypes.INTEGER,
+    //     references: {
+    //       model: 'game',
+    //       key: 'id',
+    //     },
+    //   },
     // will add back in once user model is created
     //   user_id: {
     //     type: DataTypes.INTEGER,
