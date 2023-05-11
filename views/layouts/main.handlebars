@@ -4,22 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meta Insight</title>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
 
   <body>
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        Meta Insight
-      </h1>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the contents of the sub layout here -->
-      {{{body}}}
-    </main>
-    <footer>
-      <p>&copy; 2023 Meta-Insight</p>
-    </footer>
+    <ion-split-pane when="sm" content-id="main-content">
+      <ion-menu content-id="main-content" type="overlay">
+        <ion-content class="ion-padding">
+          <h1>Meta-Insight</h1>
+          <ion-button color="dark" expand="block">Home</ion-button>
+          <ion-button
+            color="dark"
+            fill="clear"
+            expand="block"
+          >Games</ion-button>
+          <ion-button
+            color="dark"
+            fill="clear"
+            expand="block"
+          >Platforms</ion-button>
+          <ion-button
+            color="dark"
+            fill="clear"
+            expand="block"
+          >Generes</ion-button>
+          <ion-button
+            color="dark"
+            fill="clear"
+            expand="block"
+          >Publishers</ion-button>
+          <ion-button color="dark" fill="clear" expand="block">Tags</ion-button>
+        </ion-content>
+      </ion-menu>
+
+      <div class="ion-page" id="main-content">
+        <ion-header>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
+            <ion-buttons slot="end">
+              <ion-button color="dark" fill="clear" expand="block">
+                <ion-icon slot="icon-only" name="person" />
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          {{{body}}}
+        </ion-content>
+      </div>
+    </ion-split-pane>
   </body>
 
 </html>
