@@ -1,3 +1,3 @@
-// TODO: const User = require('./User');
+const User = require('./User');
 
-// TODO: module.exports = { User };
+module.exports = { User };
