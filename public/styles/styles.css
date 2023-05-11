@@ -1,0 +1,12 @@
+ion-split-pane {
+  --side-width: 3rem;
+  --side-max-width: 3rem;
+
+  /* --border: 0px; */
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
