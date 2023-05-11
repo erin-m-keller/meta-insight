@@ -1,3 +1,5 @@
+const withAuth = require("../../utils/auth");
+
 // import express router
 const gamereviewRouter = require("express").Router();
 
@@ -14,7 +16,7 @@ const gamereviewRouter = require("express").Router();
 // });
 
 // will be adding withAuth helper in different branch
-gamereviewRouter.post('/', async (req, res) => {
+gamereviewRouter.post('/', withAuth, async (req, res) => {
     try {
       const newGamereview = await newGamereview.create({
         ...req.body,
