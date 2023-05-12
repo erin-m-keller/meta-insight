@@ -1,21 +1,22 @@
-const router = require("express").Router(),
-      withAuth = require('../utils/auth');
+const router = require("express").Router();
 
-router.get("/", async (req, res) => {
+router.get("/login", async (req, res) => {
   // login route
   try {
     if (req.session.logged_in) {
-      res.redirect('/homepage'); // render homepage.handlebars
+      res.redirect('/'); // render homepage.handlebars
       return;
     }
-    res.render('login'); // render login.handlebars
+    res.render('login', { // render login.handlebars
+      url: req.url
+    });
   } catch (err) {
     // catch errors
     res.status(500).json(err); // return error
   }
 });
 
-router.get("/homepage", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   // homepage route
   try {
     res.render("homepage", { // render homepage.handlebars

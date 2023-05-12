@@ -20,5 +20,12 @@ module.exports = {
   // determines if side link is currently active
   isActive: function(url,path) {
     return (url === path) ? false : true;
+  },
+  // determines if path does not equal a certain value
+  notEqual: function(a, b, options) {
+    console.log("a: " + a);
+    console.log("b: " + b);
+    console.log("options: " + options);
+    return (a !== b) ? options.fn(this) : options.inverse(this);
   }
 };
