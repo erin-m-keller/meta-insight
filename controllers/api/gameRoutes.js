@@ -2,6 +2,7 @@ const apiKey = process.env.API_KEY;
 
 const router = require("express").Router();
 const { Game, User, Gamereview } = require("../../models");
+const fetch = require("node-fetch");
 
 // GET all gameReviews
 router.get("/", async (req, res) => {
@@ -18,13 +19,131 @@ router.get("/", async (req, res) => {
 // Fetch call
 router.get("/games", async (req, res) => {
   try {
-    const gameData = await fetch('https://api.rawg.io/v1/games', {
-      headers: {
-        'Authorization': 'Bearer ' + apiKey,
-      },
-    });
+    const gameData = await fetch(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const games = await gameData.json();
     res.status(200).json(games);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Fetch call /platforms
+router.get("/platforms", async (req, res) => {
+  try {
+    const platformData = await fetch(
+      `https://api.rawg.io/api/platforms?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const platforms = await platformData.json();
+    res.status(200).json(platforms);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Fetch call /genres
+router.get("/genres", async (req, res) => {
+  try {
+    const genreData = await fetch(
+      `https://api.rawg.io/api/genres?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const genres = await genreData.json();
+    res.status(200).json(genres);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Fetch call /stores
+router.get("/stores", async (req, res) => {
+  try {
+    const storeData = await fetch(
+      `https://api.rawg.io/api/stores?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const stores = await storeData.json();
+    res.status(200).json(stores);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Fetch call /developers
+router.get("/developers", async (req, res) => {
+  try {
+    const developerData = await fetch(
+      `https://api.rawg.io/api/developers?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const developers = await developerData.json();
+    res.status(200).json(developers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Fetch call /publishers
+router.get("/publishers", async (req, res) => {
+  try {
+    const publisherData = await fetch(
+      `https://api.rawg.io/api/publishers?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const publishers = await publisherData.json();
+    res.status(200).json(publishers);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Fetch call /tags
+router.get("/tags", async (req, res) => {
+  try {
+    const tagData = await fetch(
+      `https://api.rawg.io/api/tags?key=${process.env.API_KEY}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const tags = await tagData.json();
+    res.status(200).json(tags);
   } catch (err) {
     res.status(500).json(err);
   }
