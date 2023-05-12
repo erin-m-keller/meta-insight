@@ -22,36 +22,57 @@
 
   <body>
     <ion-split-pane when="sm" content-id="main-content">
-      {{#if logged_in}}
-        <ion-menu content-id="main-content" type="overlay">
-          <ion-content class="ion-padding">
-            <h1>Meta-Insight</h1>
-            <ion-button color="dark" expand="block">Home</ion-button>
-            <ion-button
-              color="dark"
-              fill="clear"
-              expand="block"
-            >Games</ion-button>
-            <ion-button
-              color="dark"
-              fill="clear"
-              expand="block"
-            >Platforms</ion-button>
-            <ion-button
-              color="dark"
-              fill="clear"
-              expand="block"
-            >Generes</ion-button>
-            <ion-button
-              color="dark"
-              fill="clear"
-              expand="block"
-            >Publishers</ion-button>
-            <ion-button color="dark" fill="clear" expand="block">Tags</ion-button>
-          </ion-content>
-        </ion-menu>
-      {{/if}}
-
+      <ion-menu content-id="main-content" type="overlay">
+        <ion-content class="ion-padding">
+          <h1>Meta-Insight</h1>
+          <ion-button 
+            href="/" 
+            color="dark"
+            {{#if (isActive '/' url)}}
+            fill="clear"
+            {{/if}}
+            expand="block">Home</ion-button>
+          <ion-button
+            href="/games"
+            color="dark"
+            {{#if (isActive '/games' url)}}
+            fill="clear"
+            {{/if}}
+            expand="block"
+          >Games</ion-button>
+          <ion-button
+            href="/platforms"
+            color="dark"
+            {{#if (isActive '/platforms' url)}}
+            fill="clear"
+            {{/if}}
+            expand="block"
+          >Platforms</ion-button>
+          <ion-button
+            href="/genres"
+            color="dark"
+            {{#if (isActive '/genres' url)}}
+            fill="clear"
+            {{/if}}
+            expand="block"
+          >Generes</ion-button>
+          <ion-button
+            href="/publishers"
+            color="dark"
+            {{#if (isActive '/publishers' url)}}
+            fill="clear"
+            {{/if}}
+            expand="block"
+          >Publishers</ion-button>
+          <ion-button 
+          href="/tags" 
+          color="dark" 
+          {{#if (isActive '/tags' url)}}
+          fill="clear"
+          {{/if}}
+          expand="block">Tags</ion-button>
+        </ion-content>
+      </ion-menu>
       <div class="ion-page" id="main-content">
         {{#if logged_in}}
           <ion-header>

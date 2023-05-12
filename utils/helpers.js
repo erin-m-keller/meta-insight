@@ -17,4 +17,8 @@ module.exports = {
     // Format date as MM/DD/YYYY
     return date.toLocaleDateString();
   },
+  // determines if side link is currently active
+  isActive: function(url,path) {
+    return (url === path) ? false : true;
+  }
 };
