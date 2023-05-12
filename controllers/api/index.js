@@ -1,13 +1,8 @@
 const router = require('express').Router(),      
-      authRoutes = require('./authRoutes');
+      authRoutes = require('./authRoutes'),
+      gameRoutes = require('./gameRoutes');
 
 router.use('/auth', authRoutes);
-// const userRoutes = require('./userRoutes');
-// const postRoutes = require('./postRoutes');
-// const commentRoutes = require('./commentRoutes');
-
-// router.use('/users', userRoutes);
-// router.use('/post', postRoutes);
-// router.use('/comments', commentRoutes);
+router.use('/game', gameRoutes);
 
 module.exports = router;
