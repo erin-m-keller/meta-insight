@@ -1,0 +1,28 @@
+[
+    {
+      "rating": 3,
+      "description": "Not my game but decent",
+      "date_created": "2020-01-01 00:00:00"
+    },
+    {
+      "rating": 2,
+      "description": "Hard Pass",
+      "date_created": "2020-01-01 00:00:00"
+    },
+    {
+      "rating": 1,
+      "description": "BUY NOW!!!",
+      "date_created": "2020-01-01 00:00:00"
+    },
+    {
+      "rating": 2,
+      "description": "Never, will I ever spend 50 dollars on this, maybe 20",
+      "date_created": "2020-01-01 00:00:00"
+    },
+    {
+      "rating": 5,
+      "description": "Good",
+      "date_created": "2020-01-01 00:00:00"
+    }
+]
+  
