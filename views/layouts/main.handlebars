@@ -23,59 +23,61 @@
   <body>
     <ion-split-pane when="sm" content-id="main-content">
       {{#if logged_in}}
-      <ion-menu content-id="main-content" type="overlay">
-        <ion-content class="ion-padding">
-          <h1>Meta-Insight</h1>
-          <ion-button color="dark" expand="block">Home</ion-button>
-          <ion-button
-            color="dark"
-            fill="clear"
-            expand="block"
-          >Games</ion-button>
-          <ion-button
-            color="dark"
-            fill="clear"
-            expand="block"
-          >Platforms</ion-button>
-          <ion-button
-            color="dark"
-            fill="clear"
-            expand="block"
-          >Generes</ion-button>
-          <ion-button
-            color="dark"
-            fill="clear"
-            expand="block"
-          >Publishers</ion-button>
-          <ion-button color="dark" fill="clear" expand="block">Tags</ion-button>
-        </ion-content>
-      </ion-menu>
+        <ion-menu content-id="main-content" type="overlay">
+          <ion-content class="ion-padding">
+            <h1>Meta-Insight</h1>
+            <ion-button color="dark" expand="block">Home</ion-button>
+            <ion-button
+              color="dark"
+              fill="clear"
+              expand="block"
+            >Games</ion-button>
+            <ion-button
+              color="dark"
+              fill="clear"
+              expand="block"
+            >Platforms</ion-button>
+            <ion-button
+              color="dark"
+              fill="clear"
+              expand="block"
+            >Generes</ion-button>
+            <ion-button
+              color="dark"
+              fill="clear"
+              expand="block"
+            >Publishers</ion-button>
+            <ion-button color="dark" fill="clear" expand="block">Tags</ion-button>
+          </ion-content>
+        </ion-menu>
       {{/if}}
 
       <div class="ion-page" id="main-content">
         {{#if logged_in}}
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-menu-button></ion-menu-button>
-            </ion-buttons>
-            <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
-            <ion-buttons slot="end">
-              <ion-button color="dark" fill="clear" expand="block">
-                <ion-icon slot="icon-only" name="person" />
-              </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+              </ion-buttons>
+              <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
+              <ion-buttons slot="end">
+                <ion-button color="dark" fill="clear" expand="block">
+                  <ion-icon slot="icon-only" name="person" />
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
         {{/if}}
         <ion-content class="ion-padding">
           {{{body}}}
         </ion-content>
-        <ion-footer>
-          <ion-toolbar>
-            <ion-button onclick="logoutUser(event)">Logout</button>
-          </ion-toolbar>
-        </ion-footer>
+        {{#if logged_in}}
+          <ion-footer>
+            <ion-toolbar>
+              <ion-button onclick="logoutUser(event)">Logout</button>
+            </ion-toolbar>
+          </ion-footer>
+        {{/if}}
       </div>
     </ion-split-pane>
   </body>
