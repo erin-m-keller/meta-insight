@@ -22,59 +22,61 @@
 
   <body>
     <ion-split-pane when="sm" content-id="main-content">
-      <ion-menu content-id="main-content" type="overlay">
-        <ion-content class="ion-padding">
-          <h1>Meta-Insight</h1>
-          <ion-button 
-            href="/" 
-            color="dark"
-            {{#if (isActive '/' url)}}
+      {{#notEqual url '/login'}}
+        <ion-menu content-id="main-content" type="overlay">
+          <ion-content class="ion-padding">
+            <h1>Meta-Insight</h1>
+            <ion-button 
+              href="/" 
+              color="dark"
+              {{#if (isActive '/' url)}}
+              fill="clear"
+              {{/if}}
+              expand="block">Home</ion-button>
+            <ion-button
+              href="/games"
+              color="dark"
+              {{#if (isActive '/games' url)}}
+              fill="clear"
+              {{/if}}
+              expand="block"
+            >Games</ion-button>
+            <ion-button
+              href="/platforms"
+              color="dark"
+              {{#if (isActive '/platforms' url)}}
+              fill="clear"
+              {{/if}}
+              expand="block"
+            >Platforms</ion-button>
+            <ion-button
+              href="/genres"
+              color="dark"
+              {{#if (isActive '/genres' url)}}
+              fill="clear"
+              {{/if}}
+              expand="block"
+            >Generes</ion-button>
+            <ion-button
+              href="/publishers"
+              color="dark"
+              {{#if (isActive '/publishers' url)}}
+              fill="clear"
+              {{/if}}
+              expand="block"
+            >Publishers</ion-button>
+            <ion-button 
+            href="/tags" 
+            color="dark" 
+            {{#if (isActive '/tags' url)}}
             fill="clear"
             {{/if}}
-            expand="block">Home</ion-button>
-          <ion-button
-            href="/games"
-            color="dark"
-            {{#if (isActive '/games' url)}}
-            fill="clear"
-            {{/if}}
-            expand="block"
-          >Games</ion-button>
-          <ion-button
-            href="/platforms"
-            color="dark"
-            {{#if (isActive '/platforms' url)}}
-            fill="clear"
-            {{/if}}
-            expand="block"
-          >Platforms</ion-button>
-          <ion-button
-            href="/genres"
-            color="dark"
-            {{#if (isActive '/genres' url)}}
-            fill="clear"
-            {{/if}}
-            expand="block"
-          >Generes</ion-button>
-          <ion-button
-            href="/publishers"
-            color="dark"
-            {{#if (isActive '/publishers' url)}}
-            fill="clear"
-            {{/if}}
-            expand="block"
-          >Publishers</ion-button>
-          <ion-button 
-          href="/tags" 
-          color="dark" 
-          {{#if (isActive '/tags' url)}}
-          fill="clear"
-          {{/if}}
-          expand="block">Tags</ion-button>
-        </ion-content>
-      </ion-menu>
+            expand="block">Tags</ion-button>
+          </ion-content>
+        </ion-menu>
+      {{/notEqual}}
       <div class="ion-page" id="main-content">
-        {{#if logged_in}}
+        {{#notEqual url '/login'}}
           <ion-header>
             <ion-toolbar>
               <ion-buttons slot="start">
@@ -88,7 +90,7 @@
               </ion-buttons>
             </ion-toolbar>
           </ion-header>
-        {{/if}}
+        {{/notEqual}}
         <ion-content class="ion-padding">
           {{{body}}}
         </ion-content>
@@ -96,6 +98,12 @@
           <ion-footer>
             <ion-toolbar>
               <ion-button onclick="logoutUser(event)">Logout</button>
+            </ion-toolbar>
+          </ion-footer>
+        {{else}}
+          <ion-footer>
+            <ion-toolbar>
+              <ion-button href="/login">Login</button>
             </ion-toolbar>
           </ion-footer>
         {{/if}}

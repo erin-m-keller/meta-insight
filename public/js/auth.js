@@ -10,7 +10,7 @@ const loginUser = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace('/homepage');
+        document.location.replace('/');
       } else {
         alert(JSON.stringify(response) + ' - Failed to log in');
       }
@@ -30,7 +30,7 @@ const signupUser = async (event) => {
       });
       console.log("response.ok: " + response.ok);
       if (response.ok) {
-        document.location.replace('/homepage');
+        document.location.replace('/');
       } else {
         const err = await response.json(),
               errMsg = err.errors[0].message;
