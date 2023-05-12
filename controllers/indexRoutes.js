@@ -3,8 +3,74 @@ const router = require("express").Router(); // import express router
 router.get("/", async (req, res) => {
   // homepage route
   try {
-    res.render("homepage", {
-      // render homepage.handlebars
+    res.render("homepage", { // render homepage.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+  
+router.get("/games", async (req, res) => {
+  // games route
+  try {
+    res.render("games", { // render games.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+  
+router.get("/platforms", async (req, res) => {
+  // platforms route
+  try {
+    res.render("platforms", { // render platforms.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+  
+router.get("/genres", async (req, res) => {
+  // genres route
+  try {
+    res.render("genres", { // render genres.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+  
+router.get("/publishers", async (req, res) => {
+  // publishers route
+  try {
+    res.render("publishers", { // render publishers.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+  
+router.get("/tags", async (req, res) => {
+  // tags route
+  try {
+    res.render("tags", { // render tags.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
     });
   } catch (err) {
     // catch errors
