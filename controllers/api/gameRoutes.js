@@ -1,3 +1,5 @@
+const apiKey = process.env.API_KEY;
+
 const router = require("express").Router();
 const { Game, User, Gamereview } = require("../../models");
 
@@ -10,6 +12,21 @@ router.get("/", async (req, res) => {
     res.status(200).json(gamereviewData); // return the gameReviewData
   } catch (err) {
     res.status(500).json(err); // if there is an error, return the error
+  }
+});
+
+// Fetch call
+router.get("/games", async (req, res) => {
+  try {
+    const gameData = await fetch('https://api.rawg.io/v1/games', {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey,
+      },
+    });
+    const games = await gameData.json();
+    res.status(200).json(games);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
