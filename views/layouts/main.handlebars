@@ -12,6 +12,7 @@
       nomodule
       src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
     ></script>
+    <script src="/js/logout.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
@@ -72,24 +73,32 @@
           expand="block">Tags</ion-button>
         </ion-content>
       </ion-menu>
-
       <div class="ion-page" id="main-content">
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-menu-button></ion-menu-button>
-            </ion-buttons>
-            <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
-            <ion-buttons slot="end">
-              <ion-button color="dark" fill="clear" expand="block">
-                <ion-icon slot="icon-only" name="person" />
-              </ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
+        {{#if logged_in}}
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+              </ion-buttons>
+              <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
+              <ion-buttons slot="end">
+                <ion-button color="dark" fill="clear" expand="block">
+                  <ion-icon slot="icon-only" name="person" />
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+        {{/if}}
         <ion-content class="ion-padding">
           {{{body}}}
         </ion-content>
+        {{#if logged_in}}
+          <ion-footer>
+            <ion-toolbar>
+              <ion-button onclick="logoutUser(event)">Logout</button>
+            </ion-toolbar>
+          </ion-footer>
+        {{/if}}
       </div>
     </ion-split-pane>
   </body>
