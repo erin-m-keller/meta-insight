@@ -26,53 +26,105 @@
         <ion-menu content-id="main-content" type="overlay">
           <ion-content class="ion-padding">
             <h1>Meta-Insight</h1>
+            <ion-item-divider>
+              <ion-label>Account</ion-label>
+            </ion-item-divider>
+            {{#if logged_in}}
+              <ion-button 
+                href="/reviews" 
+                {{#if (isActive '/reviews' url)}}
+                  color="primary"
+                  fill="clear"
+                {{else}}
+                  color="secondary"
+                {{/if}}
+                expand="block">
+                My Reviews
+              </ion-button>
+            {{else}}
+              <ion-button
+                fill="clear"
+                color="primary"
+                href="/login"
+                expand="block">
+                <ion-icon slot="start" name="log-in"></ion-icon>
+                Login
+              </ion-button>
+            {{/if}}
+            <ion-item-divider>
+              <ion-label>Categories</ion-label>
+            </ion-item-divider>
             <ion-button 
               href="/" 
-              color="dark"
               {{#if (isActive '/' url)}}
+              color="primary"
               fill="clear"
+              {{else}}
+              color="secondary"
               {{/if}}
               expand="block">Home</ion-button>
             <ion-button
               href="/games"
-              color="dark"
               {{#if (isActive '/games' url)}}
+              color="primary"
               fill="clear"
+              {{else}}
+              color="secondary"
               {{/if}}
               expand="block"
             >Games</ion-button>
             <ion-button
               href="/platforms"
-              color="dark"
               {{#if (isActive '/platforms' url)}}
+              color="primary"
               fill="clear"
+              {{else}}
+              color="secondary"
               {{/if}}
               expand="block"
             >Platforms</ion-button>
             <ion-button
               href="/genres"
-              color="dark"
               {{#if (isActive '/genres' url)}}
+              color="primary"
               fill="clear"
+              {{else}}
+              color="secondary"
               {{/if}}
               expand="block"
             >Generes</ion-button>
             <ion-button
               href="/publishers"
-              color="dark"
               {{#if (isActive '/publishers' url)}}
+              color="primary"
               fill="clear"
+              {{else}}
+              color="secondary"
               {{/if}}
               expand="block"
             >Publishers</ion-button>
             <ion-button 
             href="/tags" 
-            color="dark" 
             {{#if (isActive '/tags' url)}}
-            fill="clear"
-            {{/if}}
+            color="primary"
+              fill="clear"
+              {{else}}
+              color="secondary"
+              {{/if}}
             expand="block">Tags</ion-button>
           </ion-content>
+          {{#if logged_in}}
+            <ion-footer>
+              <ion-button
+                fill="clear"
+                color="secondary"
+                onclick="logoutUser(event)"
+                expand="block">
+                <ion-icon slot="start" name="log-out"></ion-icon>
+                Logout
+              </ion-button>
+            </ion-footer>
+          {{/if}}
         </ion-menu>
       {{/notEqual}}
       <div class="ion-page" id="main-content">
@@ -82,31 +134,13 @@
               <ion-buttons slot="start">
                 <ion-menu-button></ion-menu-button>
               </ion-buttons>
-              <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
-              <ion-buttons slot="end">
-                <ion-button color="dark" fill="clear" expand="block">
-                  <ion-icon slot="icon-only" name="person" />
-                </ion-button>
-              </ion-buttons>
+              <ion-searchbar placeholder="Search Games"></ion-searchbar>
             </ion-toolbar>
           </ion-header>
         {{/notEqual}}
         <ion-content class="ion-padding">
           {{{body}}}
         </ion-content>
-        {{#if logged_in}}
-          <ion-footer>
-            <ion-toolbar>
-              <ion-button onclick="logoutUser(event)">Logout</button>
-            </ion-toolbar>
-          </ion-footer>
-        {{else}}
-          <ion-footer>
-            <ion-toolbar>
-              <ion-button href="/login">Login</button>
-            </ion-toolbar>
-          </ion-footer>
-        {{/if}}
       </div>
     </ion-split-pane>
   </body>
