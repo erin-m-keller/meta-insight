@@ -94,4 +94,17 @@ router.get("/tags", async (req, res) => {
   }
 });
 
+router.get("/reviews", async (req, res) => {
+  // reviews route
+  try {
+    res.render("reviews", { // render reviews.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+
 module.exports = router; // export router
