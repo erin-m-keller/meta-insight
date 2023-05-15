@@ -27,5 +27,8 @@ module.exports = {
     console.log("b: " + b);
     console.log("options: " + options);
     return (a !== b) ? options.fn(this) : options.inverse(this);
+  },
+  toJson: function (obj) {
+      return JSON.stringify(obj, null, 3);
   }
 };
