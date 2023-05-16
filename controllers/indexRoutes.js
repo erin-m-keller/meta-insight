@@ -34,6 +34,7 @@ router.get("/games", async (req, res) => {
   try {
     const response = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`),
           games = response.data.results;
+    console.log(games.length);
     res.render("games", { // render games.handlebars
       logged_in: req.session.logged_in,
       url: req.url,
@@ -42,6 +43,23 @@ router.get("/games", async (req, res) => {
   } catch (err) {
     // catch errors
     res.status(500).json(err); // return error
+  }
+});
+
+router.get("/games/:id", async (req, res) => {
+  console.log("1 test");
+  try {
+    console.log("req.params.id: " + req.params.id);
+    const response = await axios.get(`https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`);
+    const game = response.data; // Retrieve the game data based on the ID
+
+    res.render("gamedetails", { // render gamedetails.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      game: game // Pass the fetched game to the template
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
   

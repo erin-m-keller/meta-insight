@@ -33,8 +33,12 @@ router.get("/games/id/:id", async (req, res) => {
   try {
     const game = await tryToFetch(
       `https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`
-    );
-    res.status(200).json(game);
+    );    
+    res.render("gamedetails", { // render games.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      games: game, // Pass the fetched game to the templat
+    });
   } catch (err) {
     res.status(500).json(err);
   }
