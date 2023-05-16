@@ -1,21 +1,15 @@
 <div class="row align-center mb-5">
     <p><strong>Details</strong></p>
     <ion-button href="/games" shape="round">Back</ion-button>
-    <ion-grid>
-        <ion-row>
-            <ion-column>
-                <ion-card>
-                    <ion-card-header>
-                        <ion-card-title>Released: {{game.released}}</ion-card-title>
-                        <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
-                    </ion-card-header>
-                    <ion-card-content>
-                        <ion-img src={{game.background_image}} alt={{game.slug}}></ion-img>
-                        <p><strong>{{game.rating}} &mdash; {{game.esrb_rating.name}}</strong></p>
-                        {{{game.description}}}
-                    </ion-card-content>
-                </ion-card>
-            </ion-column>
-        </ion-row>
-    </ion-grid>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Released: {{game.released}}</ion-card-title>
+            <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-img src={{game.background_image}} alt={{game.slug}}></ion-img>
+            <p><strong>{{game.rating}} &mdash; {{game.esrb_rating.name}}</strong></p>
+            {{{game.description}}}
+        </ion-card-content>
+    </ion-card>
 </div>
