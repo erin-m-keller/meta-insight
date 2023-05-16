@@ -1,24 +1,24 @@
 <div class="row align-center mb-5">
-    <p><strong>Games</strong></p>
-    <ion-grid>
-        <ion-row>
-            <ion-column>
-                {{#each games as |game| }}
-                    <a href="/games/{{game.id}}">
-                        <ion-card>
-                            <ion-card-header>
-                                <ion-card-title>Released: {{game.released}}</ion-card-title>
-                                <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
-                            </ion-card-header>
-                            <ion-card-content>
-                                <ion-img src={{game.background_image}} alt={{game.slug}}></ion-img>
-                                {{game.esrb_rating.name}}
-                                {{game.rating}}
-                            </ion-card-content>
-                        </ion-card>
-                    </a>
-                {{/each}}
-            </ion-column>
-        </ion-row>
-    </ion-grid>
+  <p><strong>Games</strong></p>
+  <ion-grid>
+    <ion-row>
+      {{#each games as |game|}}
+        <ion-col size="4">
+          <a href="/games/{{game.id}}">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Released: {{game.released}}</ion-card-title>
+                <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <img src={{game.background_image}} alt={{game.slug}} />
+                {{game.esrb_rating.name}}
+                {{game.rating}}
+              </ion-card-content>
+            </ion-card>
+          </a>
+        </ion-col>
+      {{/each}}
+    </ion-row>
+  </ion-grid>
 </div>
