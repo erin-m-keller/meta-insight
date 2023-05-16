@@ -23,9 +23,6 @@ module.exports = {
   },
   // determines if path does not equal a certain value
   notEqual: function(a, b, options) {
-    console.log("a: " + a);
-    console.log("b: " + b);
-    console.log("options: " + options);
     return (a !== b) ? options.fn(this) : options.inverse(this);
   },
   toJson: function (obj) {
