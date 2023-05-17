@@ -10,7 +10,7 @@ const loginUser = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace('/');
+        window.location.href ='/';
       } else {
         alert(JSON.stringify(response) + ' - Failed to log in');
       }

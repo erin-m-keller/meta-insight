@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Gamereview extends Model {}
+class Review extends Model {}
 
 
-Gamereview.init(
+Review.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -25,30 +25,28 @@ Gamereview.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-    // will add back in once game model is created
-    //   game_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'game',
-    //       key: 'id',
-    //     },
-    //   },
-    // will add back in once user model is created
-    //   user_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'user',
-    //       key: 'id',
-    //     },
-    //   },
+      game_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'game',
+          key: 'id',
+        },
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id',
+        },
+      },
     },
     {
       sequelize,
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'gamereview',
+      modelName: 'review',
     }
   );
 
-  module.exports = Gamereview;
+  module.exports = Review;

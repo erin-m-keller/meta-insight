@@ -12,4 +12,29 @@
             {{{game.description}}}
         </ion-card-content>
     </ion-card>
+    <div id="review-section">
+        {{#if logged_in}}
+            <h2>Leave a Review</h2>
+            <form id="review-form">
+                <ion-item>
+                    <ion-label position="floating">Review</ion-label>
+                    <ion-textarea name="comment" rows="4" id="review-content" required></ion-textarea>
+                </ion-item>
+                {{logged_in}}<br />
+                {{game.id}}<br />
+                {{logged_in_id}}<br />
+                <ion-button onclick="addReview(event,{{game.id}},{{logged_in_id}})">Submit<ion-button>
+            </form>
+        {{else}}
+            <h2>Leave a Review</h2>
+            <form id="review-form">
+                <ion-item>
+                    <ion-label position="floating">Review</ion-label>
+                    <ion-textarea name="comment" rows="4" id="review-content" required disabled></ion-textarea>
+                </ion-item>
+                <p>You must be logged in to post a review.</p>
+                <ion-button href="/login">Login<ion-button>
+            </form>
+        {{/if}}
+    </div>
 </div>

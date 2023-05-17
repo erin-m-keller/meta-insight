@@ -31,9 +31,13 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: 'Incorrect password.' });
       return;
     }
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    req.session.logged_in_id = userData.id;
+    req.session.logged_in = true;
+    req.session.save((err) => {
+      if (err) {
+        res.status(500).json({ message: 'Session could not be saved.' });
+        return;
+      }
       res.json({ user: userData, message: 'You are now logged in.' });
     });
   } catch (err) {

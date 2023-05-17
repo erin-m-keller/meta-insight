@@ -34,7 +34,7 @@ router.get("/games", async (req, res) => {
   try {
     const response = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`),
           games = response.data.results;
-    console.log(games.length);
+    console.log("req.session: " + req.session);
     res.render("games", { // render games.handlebars
       logged_in: req.session.logged_in,
       url: req.url,
