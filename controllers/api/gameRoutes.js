@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
   try {
     const gamereviewData = await Gamereview.findAll({
       include: [{ model: User }, { model: Game }], // include the User, and Game model
-    });
+        });
     res.status(200).json(gamereviewData); // return the gameReviewData
   } catch (err) {
     res.status(500).json(err); // if there is an error, return the error
