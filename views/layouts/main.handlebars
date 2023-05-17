@@ -25,9 +25,9 @@
       <ion-split-pane when="sm" content-id="main-content">
         {{#notEqual url '/login'}}
           <ion-menu content-id="main-content" type="overlay">
-            <ion-content class="ion-padding">
+            <ion-content color="light" class="ion-padding">
               <h1>Meta-Insight</h1>
-              <ion-item-divider>
+              <ion-item-divider color="light">
                 <ion-label>Account</ion-label>
               </ion-item-divider>
               {{#if logged_in}}
@@ -52,7 +52,7 @@
                   Login
                 </ion-button>
               {{/if}}
-              <ion-item-divider>
+              <ion-item-divider color="light">
                 <ion-label>Categories</ion-label>
               </ion-item-divider>
               <ion-button 
@@ -139,7 +139,7 @@
               </ion-toolbar>
             </ion-header>
           {{/notEqual}}
-          <ion-content class="ion-padding">
+          <ion-content color="light" class="ion-padding">
             {{{body}}}
           </ion-content>
         </div>
