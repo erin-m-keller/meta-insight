@@ -1,4 +1,9 @@
 <div class="row align-center mb-5">
-    <p><strong>Tags</strong></p>
-    {{toJson tags}}
+  <h1>Tags</h1>
+  <ion-searchbar
+    debounce="500"
+    placeholder="Search"
+    id="search_tags"
+  ></ion-searchbar>
+  {{toJson tags}}
 </div>
