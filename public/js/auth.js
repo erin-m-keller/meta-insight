@@ -1,5 +1,4 @@
 const loginUser = async (event) => {
-    console.log(event);
     event.preventDefault();
     const email = document.querySelector('#login-email').value.trim(),
           password = document.querySelector('#login-password').value.trim();
@@ -10,9 +9,20 @@ const loginUser = async (event) => {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response.ok) {
-        document.location.replace('/');
+        window.location.href ='/';
       } else {
-        alert(JSON.stringify(response) + ' - Failed to log in');
+        // initialize variables
+        const responseData = await response.json(),
+              emailToast = document.querySelector('.login-email-err'),
+              passToast = document.querySelector('.login-pass-err');
+        // check if the error message is specific
+        if (responseData.message === 'Email is not registered. Please sign-up.') { 
+          emailToast.isOpen = true;
+        } 
+        // check if the error message is specific
+        else if (responseData.message === 'Incorrect password.') { 
+          passToast.isOpen = true;
+        }
       }
     }
 };
@@ -32,14 +42,19 @@ const signupUser = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        const err = await response.json(),
-              errMsg = err.errors[0].message;
-        console.log(errMsg);
-        if (errMsg === 'Validation len on password failed') {
-          $('#password-length').removeClass('hidden').addClass('visible');
-        } else if (errMsg === 'email must be unique') {
-          $('#invalid-email').removeClass('hidden').addClass('visible');
+        // initialize variables
+        const responseData = await response.json(),
+              emailToast = document.querySelector('.signup-email-err'),
+              passToast = document.querySelector('.signup-pass-err');
+        if (responseData.errors[0].message === 'Validation len on password failed') {
+          passToast.isOpen = true;
+        } else if (responseData.errors[0].message === 'email must be unique') {
+          emailToast.isOpen = true;
         }
       }
     }
 };
+
+// event listeners - on form submit
+document.querySelector('.login-form').addEventListener('submit', loginUser);
+document.querySelector('.signup-form').addEventListener('submit', signupUser);

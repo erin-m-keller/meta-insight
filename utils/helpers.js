@@ -1,3 +1,6 @@
+// initialize variables
+const moment = require('moment');
+
 module.exports = {
   // Helper function returns a randomly generated book emoji
   get_emoji: () => {
@@ -13,9 +16,8 @@ module.exports = {
     return `<span for="img" aria-label="book">${book}</span>`;
   },
   // Helper function returns a formatted date
-  format_date: (date) => {
-    // Format date as MM/DD/YYYY
-    return date.toLocaleDateString();
+  format_date: function(date) {
+      return moment(date).format('MMMM Do YYYY, h:mm a');
   },
   // determines if side link is currently active
   isActive: function(url,path) {

@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Gamereview extends Model {}
+class Review extends Model {}
 
 
-Gamereview.init(
+Review.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -12,10 +12,11 @@ Gamereview.init(
         primaryKey: true,
         autoIncrement: true,
       },
-    //   may look at decimal for 10 scale, 1-5 or 1-5 stars etc
+      //   may look at decimal for 10 scale, 1-5 or 1-5 stars etc
       rating: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
+        defaultValue: 5
       },
       description: {
         type: DataTypes.STRING,
@@ -25,30 +26,28 @@ Gamereview.init(
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-    // will add back in once game model is created
-    //   game_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'game',
-    //       key: 'id',
-    //     },
-    //   },
-    // will add back in once user model is created
-    //   user_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'user',
-    //       key: 'id',
-    //     },
-    //   },
+      game_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'game',
+          key: 'id',
+        },
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id',
+        },
+      },
     },
     {
       sequelize,
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'gamereview',
+      modelName: 'review',
     }
   );
 
-  module.exports = Gamereview;
+  module.exports = Review;

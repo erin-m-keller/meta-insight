@@ -12,4 +12,56 @@
             {{{game.description}}}
         </ion-card-content>
     </ion-card>
+    <div>
+        {{#if logged_in}}
+            <h2>Leave a Review</h2>
+            <form id="review-form">
+                <ion-item>
+                    <ion-label position="floating">Review</ion-label>
+                    <ion-textarea name="comment" rows="4" id="review-content" required></ion-textarea>
+                </ion-item>
+                <ion-button onclick="addReview(event,{{game.id}},{{logged_in_id}})">Submit</ion-button>
+            </form>
+        {{else}}
+            <h2>Leave a Review</h2>
+            <form>
+                <ion-item>
+                    <ion-label position="floating">Review</ion-label>
+                    <ion-textarea name="comment" rows="4" required disabled></ion-textarea>
+                </ion-item>
+                <p>You must be logged in to post a review.</p>
+                <ion-button href="/login">Login</ion-button>
+            </form>
+        {{/if}}
+        <div class="reviews">
+            <ion-list>
+                <ion-item-divider color="dark">
+                    <ion-label class="text-left"><ion-icon name="chatbox-ellipses-outline"></ion-icon>&nbsp;{{reviews.length}} Reviews</ion-label>
+                </ion-item-divider>
+                {{#if reviews}}
+                    <ion-item-group class="review-section">
+                        {{#each reviews as |review|}}
+                            <ion-item>
+                                <ion-icon name="person-circle-outline" class="ion-icon"></ion-icon>
+                                <ion-label>
+                                    <div class="date-time"><small>{{format_date review.date_created}}</small></div>
+                                    <h2>{{review.user.username}}</h2>
+                                    <p>{{review.description}}</p>
+                                </ion-label>
+                            </ion-item>
+                        {{/each}}
+                    </ion-item-group>
+                {{else}}
+                    <ion-item-group class="review-section">
+                        <ion-item>
+                            <ion-icon name="sparkles-outline" class="ion-icon"></ion-icon>
+                            <ion-label>
+                                <h2>Be the first to review!</h2>
+                            </ion-label>
+                        </ion-item>
+                    </ion-item-group>
+                {{/if}}
+            </ion-list>
+        </div>
+    </div>
 </div>

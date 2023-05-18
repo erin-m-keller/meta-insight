@@ -1,5 +1,6 @@
 const router = require("express").Router(),
-      axios = require('axios');
+      axios = require('axios'),
+      { User, Review } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -34,7 +35,6 @@ router.get("/games", async (req, res) => {
   try {
     const response = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`),
           games = response.data.results;
-    console.log(games.length);
     res.render("games", { // render games.handlebars
       logged_in: req.session.logged_in,
       url: req.url,
@@ -47,19 +47,31 @@ router.get("/games", async (req, res) => {
 });
 
 router.get("/games/:id", async (req, res) => {
-  console.log("1 test");
   try {
-    console.log("req.params.id: " + req.params.id);
-    const response = await axios.get(`https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`);
-    const game = response.data; // Retrieve the game data based on the ID
-
+    const response = await axios.get(`https://api.rawg.io/api/games/${req.params.id}?key=${process.env.API_KEY}`),
+          game = response.data; // Retrieve the game data based on the ID
+    // get all posts from the database to populate the home page
+    const reviewsData = await Review.findAll({
+      where: { game_id: req.params.id }, // Filter reviews by game_id
+      order: [['date_created', 'DESC']], // Order by date_created, descending
+      include: [
+        {
+          model: User, // Include User model to retrieve username
+          attributes: ['username'], // Return the username attribute
+        }
+      ],
+    });
+    // transform post data into javascript object
+    const reviews = reviewsData.map((review) => review.get({ plain: true }));
     res.render("gamedetails", { // render gamedetails.handlebars
       logged_in: req.session.logged_in,
+      logged_in_id: req.session.logged_in_id,
       url: req.url,
-      game: game // Pass the fetched game to the template
+      game: game,
+      reviews: reviews
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({message: reviews});
   }
 });
   
