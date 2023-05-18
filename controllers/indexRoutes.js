@@ -1,17 +1,37 @@
 const router = require("express").Router(),
       axios = require('axios');
 
-router.get('/', async (req, res) => {
-  try {
-
-    res.render('homepage', {
-      logged_in: req.session.logged_in,
-      url: req.url
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+      router.get("/", async (req, res) => {
+        try {
+          const getResponseFunction = async (platformID) => {
+            // Fetch games by platform id, sort by rating and get the first 10 results
+            const getResponse = await axios.get(
+              `https://api.rawg.io/api/games?key=${process.env.API_KEY}&platforms=${platformID}&ordering=-rating&page_size=10`
+            );
+            return getResponse.data.results;
+          };
+      
+          const playstation = await getResponseFunction(187);
+          const xbox = await getResponseFunction(186);
+          const nintendo = await getResponseFunction(7);
+          const pc = await getResponseFunction(4);
+          const iOS = await getResponseFunction(3);
+          const android = await getResponseFunction(21);
+      
+          res.render("homepage", {
+            logged_in: req.session.logged_in,
+            url: req.url,
+            playstation: playstation,
+            xbox: xbox,
+            nintendo: nintendo,
+            pc: pc,
+            iOS: iOS,
+            android: android,
+          });
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      });
 
 router.get("/login", async (req, res) => {
   // login route
