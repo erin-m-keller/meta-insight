@@ -12,10 +12,11 @@ Review.init(
         primaryKey: true,
         autoIncrement: true,
       },
-    //   may look at decimal for 10 scale, 1-5 or 1-5 stars etc
+      //   may look at decimal for 10 scale, 1-5 or 1-5 stars etc
       rating: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
+        defaultValue: 5
       },
       description: {
         type: DataTypes.STRING,
