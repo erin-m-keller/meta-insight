@@ -1,4 +1,9 @@
 <div class="row align-center mb-5">
-    <p><strong>Genres</strong></p>
-    {{toJson genres}}
+  <h1>Genres</h1>
+  <ion-searchbar
+    debounce="500"
+    placeholder="Search"
+    id="search_genres"
+  ></ion-searchbar>
+  {{toJson genres}}
 </div>
