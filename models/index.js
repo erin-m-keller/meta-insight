@@ -5,7 +5,7 @@ const Game = require('./Game'),
 
 // User: one-to-many (user has many Reviews)
 User.hasMany(Review, {
-  foreignKey: 'user_id' // foreign key in Review model referencing user_id in User model
+  foreignKey: 'user_id' // foreign key in Review model referencing user_id in User model,
 });
 
 // Game: one-to-many (game has many Reviews)
