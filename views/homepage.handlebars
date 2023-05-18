@@ -6,7 +6,7 @@
           {{!-- PlayStation --}}
           <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
             <h3>PlayStation</h3>
-              {{#each playstationReviews}}
+              {{#each playstation as |game|}}
               <a href="/games/{{game.id}}">
                 <ion-card>
                   <ion-card-header>
@@ -25,7 +25,7 @@
             {{!-- Xbox --}}
             <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
               <h3>Xbox</h3>
-              {{#each xboxReviews}}
+              {{#each xbox as |game|}}
               <a href="/games/{{game.id}}">
                 <ion-card>
                   <ion-card-header>
@@ -37,14 +37,14 @@
                     {{game.esrb_rating.name}}
                     {{game.rating}}
                   </ion-card-content>
-                </ion-card>
-              </a>
+                </ion-card>                
+              </a>              
               {{/each}}
             </ion-col>            
-      {{!-- Nintendo       --}}
+      {{!-- Nintendo --}}
             <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
               <h3>Nintendo</h3>
-              {{#each nintendoReviews}}
+              {{#each nintendo as |game|}}
               <a href="/games/{{game.id}}">
                 <ion-card>
                   <ion-card-header>
@@ -63,7 +63,7 @@
         {{!-- PC --}}
         <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
           <h3>PC</h3>
-          {{#each pcReviews}}
+          {{#each pc as |game|}}
           <a href="/games/{{game.id}}">
             <ion-card>
               <ion-card-header>
@@ -82,7 +82,7 @@
         {{!-- iOS --}}
         <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
           <h3>iOS</h3>
-          {{#each mobileReviews}}
+          {{#each iOS as |game|}}
           <a href="/games/{{game.id}}">
             <ion-card>
               <ion-card-header>
@@ -101,7 +101,7 @@
       {{!-- Android --}}
           <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
             <h3>Android</h3>
-              {{#each androidReviews}}
+              {{#each android as |game|}}
               <a href="/games/{{game.id}}">
                 <ion-card>
                   <ion-card-header>
