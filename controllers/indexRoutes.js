@@ -127,7 +127,6 @@ router.get("/platforms/:id", async (req, res) => {
         `https://api.rawg.io/api/platforms/${req.params.id}?key=${process.env.API_KEY}`
       ),
       platform = response.data; // Retrieve the platform data based on the ID
-    // get all posts from the database to populate the home page
     const gamesData = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_KEY}&platforms=${req.params.id}&ordering=-rating&page_size=10`
       ),
@@ -169,7 +168,6 @@ router.get("/genres/:id", async (req, res) => {
         `https://api.rawg.io/api/genres/${req.params.id}?key=${process.env.API_KEY}`
       ),
       genre = response.data; // Retrieve the genre data based on the ID
-    // get all posts from the database to populate the home page
     const gamesData = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_KEY}&genres=${req.params.id}&ordering=-rating&page_size=10`
       ),
@@ -205,6 +203,28 @@ router.get("/publishers", async (req, res) => {
   }
 });
 
+router.get("/publishers/:id", async (req, res) => {
+  try {
+    const response = await axios.get(
+        `https://api.rawg.io/api/publishers/${req.params.id}?key=${process.env.API_KEY}`
+      ),
+      publisher = response.data; // Retrieve the publisher data based on the ID
+    const gamesData = await axios.get(
+        `https://api.rawg.io/api/games?key=${process.env.API_KEY}&publishers=${req.params.id}&ordering=-rating&page_size=10`
+      ),
+      games = gamesData.data.results;
+    res.render("publisherdetails", {
+      // render publisherdetails.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      publisher: publisher,
+      games: games,
+    });
+  } catch (err) {
+    res.status(500).json({ message: reviews });
+  }
+});
+
 router.get("/tags", async (req, res) => {
   // tags route
   try {
@@ -221,6 +241,29 @@ router.get("/tags", async (req, res) => {
   } catch (err) {
     // catch errors
     res.status(500).json(err); // return error
+  }
+});
+
+router.get("/tags/:id", async (req, res) => {
+  try {
+    const response = await axios.get(
+        `https://api.rawg.io/api/tags/${req.params.id}?key=${process.env.API_KEY}`
+      ),
+      tag = response.data; // Retrieve the tag data based on the ID
+    const gamesData = await axios.get(
+        `https://api.rawg.io/api/games?key=${process.env.API_KEY}&tags=${req.params.id}&ordering=-rating&page_size=10`
+      ),
+      games = gamesData.data.results;
+    res.render("tagdetails", {
+      // render tagdetails.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      tag: tag,
+      games: games,
+    });
+  } catch (err) {
+    // catch errors
+    res.status(500).json({ message: reviews }); // return error
   }
 });
 
