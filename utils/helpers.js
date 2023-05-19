@@ -35,23 +35,23 @@ module.exports = {
         stars = "";
     switch(elem) {
       case 1:
-        stars = "&#9734;";
+        stars = "&#11088;";
         break;
       case 2:
-        stars = "&#9734;&#9734;";
+        stars = "&#11088;&#11088;";
         break;
       case 3:
-        stars = "&#9734;&#9734;&#9734;";
+        stars = "&#11088;&#11088;&#11088;";
         break;
       case 4:
-        stars = "&#9734;&#9734;&#9734;&#9734;";
+        stars = "&#11088;&#11088;&#11088;&#11088;";
         break;
       case 5:
-        stars = "&#9734;&#9734;&#9734;&#9734;&#9734;";
+        stars = "&#11088;&#11088;&#11088;&#11088;&#11088;";
         break;
       default:
         // code block
     }
-      return stars;
+    return stars;
   }
 };

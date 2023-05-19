@@ -20,18 +20,18 @@
                 <ion-list>
                     <ion-item>
                         <ion-select id="review-rating" color="light" label="Select rating" placeholder="Select rating">
-                            <ion-select-option value="1">&#9734;</ion-select-option>
-                            <ion-select-option value="2">&#9734;&#9734;</ion-select-option>
-                            <ion-select-option value="3">&#9734;&#9734;&#9734;</ion-select-option>
-                            <ion-select-option value="4">&#9734;&#9734;&#9734;&#9734;</ion-select-option>
-                            <ion-select-option value="5">&#9734;&#9734;&#9734;&#9734;&#9734;</ion-select-option>
+                            <ion-select-option value="1">&#11088;</ion-select-option>
+                            <ion-select-option value="2">&#11088;&#11088;</ion-select-option>
+                            <ion-select-option value="3">&#11088;&#11088;&#11088;</ion-select-option>
+                            <ion-select-option value="4">&#11088;&#11088;&#11088;&#11088;</ion-select-option>
+                            <ion-select-option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;</ion-select-option>
                         </ion-select>
                     </ion-item>
                     <ion-item>
                         <ion-label position="floating">Review</ion-label>
                         <ion-textarea name="review" rows="4" id="review-content"></ion-textarea>
                     </ion-item>
-                    <ion-button type="submit" color="light">Submit</ion-button>
+                    <ion-button expand="full" color="light" class="review-btn" type="submit">Submit</ion-button>
                 </ion-list>
             </form>
         {{else}}
@@ -39,11 +39,11 @@
             <form>
                 <ion-item>
                     <ion-select id="review-rating" color="light" label="Select rating" placeholder="Select rating" disabled>
-                        <ion-select-option value="1">&#9734;</ion-select-option>
-                        <ion-select-option value="2">&#9734;&#9734;</ion-select-option>
-                        <ion-select-option value="3">&#9734;&#9734;&#9734;</ion-select-option>
-                        <ion-select-option value="4">&#9734;&#9734;&#9734;&#9734;</ion-select-option>
-                        <ion-select-option value="5">&#9734;&#9734;&#9734;&#9734;&#9734;</ion-select-option>
+                        <ion-select-option value="1">&#11088;</ion-select-option>
+                        <ion-select-option value="2">&#11088;&#11088;</ion-select-option>
+                        <ion-select-option value="3">&#11088;&#11088;&#11088;</ion-select-option>
+                        <ion-select-option value="4">&#11088;&#11088;&#11088;&#11088;</ion-select-option>
+                        <ion-select-option value="5">&#11088;&#11088;&#11088;&#11088;&#11088;</ion-select-option>
                     </ion-select>
                 </ion-item>
                 <ion-item>
@@ -51,12 +51,12 @@
                     <ion-textarea name="review" rows="4" disabled></ion-textarea>
                 </ion-item>
                 <p>You must be logged in to post a review.</p>
-                <ion-button href="/login">Login</ion-button>
+                <ion-button expand="full" class="review-btn" color="light" href="/login">Login</ion-button>
             </form>
         {{/if}}
         <div class="reviews">
             <ion-list>
-                <ion-item-divider color="dark">
+                <ion-item-divider class="reviews-header">
                     <ion-label class="text-left"><ion-icon name="chatbox-ellipses-outline"></ion-icon>&nbsp;{{reviews.length}} Reviews</ion-label>
                 </ion-item-divider>
                 {{#if reviews}}

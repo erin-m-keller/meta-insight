@@ -181,6 +181,18 @@ ion-item-divider {
   color: #032b43;
 }
 
+.list-md {
+  padding-top: 0;
+}
+
+.reviews-header {
+  background-color: var(--ion-color-secondary);
+}
+
+.review-btn {
+  margin: 1em;
+}
+
 @media all and (min-width: 768px) {
   .login-form,
   .signup-form {

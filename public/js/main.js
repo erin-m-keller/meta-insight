@@ -68,6 +68,35 @@ const addReview = async (event,gameId,userId,rating) => {
 };
 
 /**
+ * @generateRating
+ * Rebuilds the ratings
+ */
+const generateRating = (rating) => {
+  let elem = rating,
+      stars = "";
+  switch(elem) {
+    case 1:
+      stars = "&#11088;";
+      break;
+    case 2:
+      stars = "&#11088;&#11088;";
+      break;
+    case 3:
+      stars = "&#11088;&#11088;&#11088;";
+      break;
+    case 4:
+      stars = "&#11088;&#11088;&#11088;&#11088;";
+      break;
+    case 5:
+      stars = "&#11088;&#11088;&#11088;&#11088;&#11088;";
+      break;
+    default:
+      // code block
+  }
+  return stars;
+}
+
+/**
  * @updateReviews
  * Rebuilds the reviews section when a user
  * adds a new review
@@ -88,6 +117,7 @@ const updateReviews = (reviewsData) => {
         <ion-icon name="person-circle-outline" class="ion-icon"></ion-icon>
         <ion-label>
             <div class="date-time"><small>${formattedDate}</small></div>
+            <div class="review-rating"><small>${generateRating(review.rating)}</small></div>
             <h2>${review.user.username}</h2>
             <p>${review.description}</p>
         </ion-label>
