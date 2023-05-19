@@ -17,7 +17,8 @@ const router = require('express').Router(),
       const newReview = await Review.create({
         description: req.body.description,
         user_id: req.body.user_id,
-        game_id: req.body.game_id
+        game_id: req.body.game_id,
+        rating: req.body.rating
       });
       const foundReview = await Review.findByPk(newReview.id);
       res.status(200).json({ review: foundReview, message: 'Review added successfully.' });
