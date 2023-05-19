@@ -17,7 +17,7 @@ function clearTxtArea(event) {
  * to any game they are currently
  * viewing
  */
-const addReview = async (event,gameId,userId) => {
+const addReview = async (event,gameId,userId,gameTitle) => {
   // prevent default behavior
   event.preventDefault();
   // initialize variables
@@ -28,7 +28,7 @@ const addReview = async (event,gameId,userId) => {
     // the response received from the POST request
     const response = await fetch('/api/review/add', {
       method: 'POST',
-      body: JSON.stringify({ "description": reviewContent, "user_id": userId, "game_id": gameId }),
+      body: JSON.stringify({ "description": reviewContent, "user_id": userId, "game_id": gameId, "title": gameTitle }),
       headers: { 'Content-Type': 'application/json' },
     });
     // if reponse ok

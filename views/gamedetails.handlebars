@@ -20,7 +20,7 @@
                     <ion-label position="floating">Review</ion-label>
                     <ion-textarea name="comment" rows="4" id="review-content" required></ion-textarea>
                 </ion-item>
-                <ion-button onclick="addReview(event,{{game.id}},{{logged_in_id}})">Submit</ion-button>
+                <ion-button onclick="addReview(event,{{game.id}},{{logged_in_id}},'{{game.name}}')">Submit</ion-button>
             </form>
         {{else}}
             <h2>Leave a Review</h2>

@@ -1,6 +1,7 @@
 const router = require("express").Router(),
   axios = require("axios"),
-  { User, Review } = require("../models");
+  { User, Review, Game } = require("../models"),
+  withAuth = require('../utils/auth');
 
 router.get("/", async (req, res) => {
   try {
@@ -21,6 +22,7 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       logged_in: req.session.logged_in,
+      logged_in_id: req.session.logged_in_id,
       url: req.url,
       playstation: playstation,
       xbox: xbox,
@@ -267,18 +269,32 @@ router.get("/tags/:id", async (req, res) => {
   }
 });
 
-router.get("/reviews", async (req, res) => {
+router.get("/reviews/:id", withAuth, async (req, res) => {
   // reviews route
   try {
-    const response = await axios.get(
-        `https://api.rawg.io/api/reviews?key=${process.env.API_KEY}`
-      ),
-      reviews = response.data.results;
+    const userId = req.params.id;
+    // get all posts from the database to populate the home page
+    const reviewsData = await Review.findAll({
+      where: { user_id: userId }, // Filter reviews by user_id
+      order: [["date_created", "DESC"]], // Order by date_created, descending
+      include: [
+        {
+          model: Game, // Include Game model to retrieve title
+          attributes: ["title"], // Return the title attribute
+        },
+        {
+          model: User, // Include User model to retrieve title
+          attributes: ["username"], // Return the username attribute
+        }
+      ],
+    });
+    // transform post data into javascript object
+    const reviews = reviewsData.map((review) => review.get({ plain: true }));
     res.render("reviews", {
-      // render games.handlebars
+      // render reviews.handlebars
       logged_in: req.session.logged_in,
       url: req.url,
-      reviews: reviews, // Pass the fetched reviews to the templat
+      reviews: reviews,
     });
   } catch (err) {
     // catch errors
