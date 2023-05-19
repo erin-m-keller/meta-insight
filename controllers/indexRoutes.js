@@ -205,6 +205,29 @@ router.get("/publishers", async (req, res) => {
   }
 });
 
+router.get("/publishers/:id", async (req, res) => {
+  try {
+    const response = await axios.get(
+        `https://api.rawg.io/api/publishers/${req.params.id}?key=${process.env.API_KEY}`
+      ),
+      publisher = response.data; // Retrieve the publisher data based on the ID
+    // get all posts from the database to populate the home page
+    const gamesData = await axios.get(
+        `https://api.rawg.io/api/games?key=${process.env.API_KEY}&publishers=${req.params.id}&ordering=-rating&page_size=10`
+      ),
+      games = gamesData.data.results;
+    res.render("publisherdetails", {
+      // render publisherdetails.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      publisher: publisher,
+      games: games,
+    });
+  } catch (err) {
+    res.status(500).json({ message: reviews });
+  }
+});
+
 router.get("/tags", async (req, res) => {
   // tags route
   try {
