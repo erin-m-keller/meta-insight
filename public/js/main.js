@@ -17,18 +17,28 @@ function clearTxtArea(event) {
  * to any game they are currently
  * viewing
  */
-const addReview = async (event,gameId,userId) => {
+const addReview = async (event,gameId,userId,rating) => {
+  console.log("rating: " + rating);
   // prevent default behavior
   event.preventDefault();
   // initialize variables
-  const reviewContent = document.querySelector('#review-content').value;
-  
+  const ratingToast = document.querySelector('.rating-err'),
+        reviewToast = document.querySelector('.review-err'),
+        reviewContent = document.querySelector('#review-content');
+  if (!rating) {
+    ratingToast.isOpen = true;
+    return;
+  }
+  if (!reviewContent.value) {
+    reviewToast.isOpen = true;
+    return;
+  }
   // if all elements have a value
-  if (reviewContent && gameId && userId) {
+  if (reviewContent.value && gameId && userId && rating) {
     // the response received from the POST request
     const response = await fetch('/api/review/add', {
       method: 'POST',
-      body: JSON.stringify({ "description": reviewContent, "user_id": userId, "game_id": gameId }),
+      body: JSON.stringify({ "description": reviewContent.value, "user_id": userId, "game_id": gameId, "rating": rating }),
       headers: { 'Content-Type': 'application/json' },
     });
     // if reponse ok
@@ -87,3 +97,14 @@ const updateReviews = (reviewsData) => {
     reviewSection.appendChild(reviewElement);
   });
 };
+
+// event listeners - on form submit
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('review-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const gameId = document.getElementById("game-id").value,
+          loggedInId = document.getElementById("user-id").value,
+          reviewRating = document.getElementById("review-rating").value;
+    addReview(event, gameId, loggedInId, reviewRating);
+  });
+});

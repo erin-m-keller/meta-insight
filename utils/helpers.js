@@ -29,5 +29,29 @@ module.exports = {
   },
   toJson: function (obj) {
       return JSON.stringify(obj, null, 3);
+  },
+  generateRating: function (rating) {
+    let elem = rating,
+        stars = "";
+    switch(elem) {
+      case 1:
+        stars = "&#9734;";
+        break;
+      case 2:
+        stars = "&#9734;&#9734;";
+        break;
+      case 3:
+        stars = "&#9734;&#9734;&#9734;";
+        break;
+      case 4:
+        stars = "&#9734;&#9734;&#9734;&#9734;";
+        break;
+      case 5:
+        stars = "&#9734;&#9734;&#9734;&#9734;&#9734;";
+        break;
+      default:
+        // code block
+    }
+      return stars;
   }
 };

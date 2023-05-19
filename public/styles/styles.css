@@ -156,7 +156,8 @@ ion-item-divider {
   margin-right: 1em;
 }
 
-.date-time {
+.date-time,
+.review-rating {
   float: right;
   clear: both;
 }
@@ -165,6 +166,19 @@ ion-item-divider {
 .signup-form {
   width: 100%;
   margin: 1em;
+}
+
+.alert-radio-inner.sc-ion-alert-md,
+[aria-checked=true].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+  border-color: var(--ion-color-secondary);
+}
+
+.alert-radio-inner.sc-ion-alert-md {
+  background-color: var(--ion-color-secondary);
+}
+
+.alert-button.sc-ion-alert-md {
+  color: #032b43;
 }
 
 @media all and (min-width: 768px) {
