@@ -1,0 +1,63 @@
+<ion-tabs>
+  <ion-tab tab="login">
+    <form class="login-form">
+        <img src="/images/title.svg" alt="Meta Insight Logo" />
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Login</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-input label="Email" type="email" placeholder="email@domain.com" id="login-email" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input label="Password" type="password" placeholder="Enter password" id="login-password" required></ion-input>
+                    </ion-item>
+                    <ion-button expand="full" class="review-btn" color="light" type="submit">Login</ion-button>
+                </ion-list>
+                <ion-toast class="login-email-err" duration="5000" message="Email is not registered. Please sign-up."></ion-toast>
+                <ion-toast class="login-pass-err" duration="5000" message="Incorrect password."></ion-toast>
+            </ion-card-content>
+        </ion-card>
+    </form>
+  </ion-tab>
+  <ion-tab tab="sign-up">
+    <form class="signup-form">
+        <img src="/images/title.svg" alt="Meta Insight Logo" />
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Sign-Up</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                    <ion-input label="Username" type="text" placeholder="Enter username" id="signup-username" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                    <ion-input label="Email" type="email" placeholder="email@domain.com" id="signup-email" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                    <ion-input label="Password" type="password" placeholder="Enter password" id="signup-password" required></ion-input>
+                    </ion-item>
+                    <ion-button expand="full" class="review-btn" color="light" type="submit">Sign-Up</ion-button>
+                </ion-list>
+                <ion-toast class="signup-email-err" duration="5000" message="Email is already registered. Please login."></ion-toast>
+                <ion-toast class="signup-pass-err" duration="5000" message="Password must be longer than 8 characters."></ion-toast>
+            </ion-card-content>
+        </ion-card>
+    </form>
+  </ion-tab>
+  <ion-tab-bar slot="top" class="login-header" color="dark">
+    <ion-tab-button href="/">
+      Home
+    </ion-tab-button>
+    <ion-tab-button tab="login">
+      Login
+    </ion-tab-button>
+    <ion-tab-button tab="sign-up">
+      Sign-Up
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+<script src="/js/auth.js"></script>

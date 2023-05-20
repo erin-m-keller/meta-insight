@@ -1,0 +1,23 @@
+<div class="row align-center mb-5">
+  <h1>Publishers</h1>
+  <ion-grid>
+    <ion-row>
+      {{#each publishers as |publisher|}}
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+          <a href="/publishers/{{publisher.id}}">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Game Count: {{publisher.games_count}}</ion-card-title>
+                <ion-card-subtitle>{{publisher.name}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <img src={{publisher.image_background}} alt={{publisher.slug}} />
+                {{publisher.description}}
+              </ion-card-content>
+            </ion-card>
+          </a>
+        </ion-col>
+      {{/each}}
+    </ion-row>
+  </ion-grid>
+</div>

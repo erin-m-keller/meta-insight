@@ -1,3 +1,122 @@
-<div class="row align-center mb-5">
-  <!-- TODO -->
+    <div class="row align-center mb-5">
+      <p><strong>Home</strong></p>
+    </div>
+      <ion-grid>
+        <ion-row>
+          {{!-- PlayStation --}}
+          <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+            <h3>PlayStation</h3>
+              {{#each playstation as |game|}}
+              <a href="/games/{{game.id}}">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>Released: {{game.released}}</ion-card-title>
+                    <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <img src={{game.background_image}} alt={{game.slug}} />
+                    {{game.esrb_rating.name}}
+                    {{game.rating}}
+                  </ion-card-content>
+                </ion-card>
+              </a>
+              {{/each}}
+            </ion-col>
+            {{!-- Xbox --}}
+            <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+              <h3>Xbox</h3>
+              {{#each xbox as |game|}}
+              <a href="/games/{{game.id}}">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>Released: {{game.released}}</ion-card-title>
+                    <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <img src={{game.background_image}} alt={{game.slug}} />
+                    {{game.esrb_rating.name}}
+                    {{game.rating}}
+                  </ion-card-content>
+                </ion-card>                
+              </a>              
+              {{/each}}
+            </ion-col>            
+      {{!-- Nintendo --}}
+            <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+              <h3>Nintendo</h3>
+              {{#each nintendo as |game|}}
+              <a href="/games/{{game.id}}">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>Released: {{game.released}}</ion-card-title>
+                    <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <img src={{game.background_image}} alt={{game.slug}} />
+                    {{game.esrb_rating.name}}
+                    {{game.rating}}
+                  </ion-card-content>
+                </ion-card>
+              </a>
+              {{/each}}
+            </ion-col>
+        {{!-- PC --}}
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+          <h3>PC</h3>
+          {{#each pc as |game|}}
+          <a href="/games/{{game.id}}">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Released: {{game.released}}</ion-card-title>
+                <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <img src={{game.background_image}} alt={{game.slug}} />
+                {{game.esrb_rating.name}}
+                {{game.rating}}
+              </ion-card-content>
+            </ion-card>
+          </a>
+          {{/each}}
+        </ion-col>
+        {{!-- iOS --}}
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+          <h3>iOS</h3>
+          {{#each iOS as |game|}}
+          <a href="/games/{{game.id}}">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Released: {{game.released}}</ion-card-title>
+                <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <img src={{game.background_image}} alt={{game.slug}} />
+                {{game.esrb_rating.name}}
+                {{game.rating}}
+              </ion-card-content>
+            </ion-card>
+          </a>
+           {{/each}}
+        </ion-col>
+      {{!-- Android --}}
+          <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+            <h3>Android</h3>
+              {{#each android as |game|}}
+              <a href="/games/{{game.id}}">
+                <ion-card>
+                  <ion-card-header>
+                    <ion-card-title>Released: {{game.released}}</ion-card-title>
+                    <ion-card-subtitle>{{game.name}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <img src={{game.background_image}} alt={{game.slug}} />
+                    {{game.esrb_rating.name}}
+                    {{game.rating}}
+                  </ion-card-content>
+                </ion-card>
+              </a>
+              {{/each}}
+            </ion-col>
+      </ion-row>
+    </ion-grid>
 </div>

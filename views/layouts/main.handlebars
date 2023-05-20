@@ -1,26 +1,158 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meta Insight</title>
-  <link rel="stylesheet" href="/css/jass.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta Insight</title>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/logout.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
 
-<body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      Meta Insight
-    </h1>
-  </header>
-  <main class="container container-fluid mt-5">
-    <!-- Render the contents of the sub layout here -->
-    {{{ body }}}
-  </main>
-  <footer>
-      
-  </footer>
-</body>
-
+  <body>
+    <ion-app>
+      <ion-split-pane when="sm" content-id="main-content">
+        {{#notEqual url '/login'}}
+          <ion-menu content-id="main-content" type="overlay">
+            <ion-content color="light" class="ion-padding">
+              <h1>Meta-Insight</h1>
+              <ion-item-divider color="light">
+                <ion-label>Account</ion-label>
+              </ion-item-divider>
+              {{#if logged_in}}
+                <ion-button 
+                  href="/reviews/{{logged_in_id}}" 
+                  {{#if (isActive url '/reviews')}}
+                    color="primary"
+                    fill="clear"
+                  {{else}}
+                    color="secondary"
+                  {{/if}}
+                  expand="block">
+                  My Reviews
+                </ion-button>
+              {{else}}
+                <ion-button
+                  fill="clear"
+                  color="primary"
+                  href="/login"
+                  expand="block">
+                  <ion-icon slot="start" name="log-in"></ion-icon>
+                  Login
+                </ion-button>
+              {{/if}}
+              <ion-item-divider color="light">
+                <ion-label>Categories</ion-label>
+              </ion-item-divider>
+              <ion-button 
+                href="/" 
+                {{#if (isActive url '/')}}
+                color="primary"
+                fill="clear"
+                {{else}}
+                color="secondary"
+                {{/if}}
+                expand="block">Home</ion-button>
+              <ion-button
+                href="/games"
+                {{#if (isActive url '/games')}}
+                color="primary"
+                fill="clear"
+                {{else}}
+                color="secondary"
+                {{/if}}
+                expand="block"
+              >Games</ion-button>
+              <ion-button
+                href="/platforms"
+                {{#if (isActive url '/platforms')}}
+                color="primary"
+                fill="clear"
+                {{else}}
+                color="secondary"
+                {{/if}}
+                expand="block"
+              >Platforms</ion-button>
+              <ion-button
+                href="/genres"
+                {{#if (isActive url '/genres')}}
+                color="primary"
+                fill="clear"
+                {{else}}
+                color="secondary"
+                {{/if}}
+                expand="block"
+              >Genres</ion-button>
+              <ion-button
+                href="/publishers"
+                {{#if (isActive url '/publishers')}}
+                color="primary"
+                fill="clear"
+                {{else}}
+                color="secondary"
+                {{/if}}
+                expand="block"
+              >Publishers</ion-button>
+              <ion-button 
+              href="/tags" 
+              {{#if (isActive url '/tags')}}
+              color="primary"
+                fill="clear"
+                {{else}}
+                color="secondary"
+                {{/if}}
+              expand="block">Tags</ion-button>
+            </ion-content>
+            {{#if logged_in}}
+              <ion-footer>
+                <ion-button
+                  fill="clear"
+                  color="secondary"
+                  onclick="logoutUser(event)"
+                  expand="block">
+                  <ion-icon slot="start" name="log-out"></ion-icon>
+                  Logout
+                </ion-button>
+              </ion-footer>
+            {{/if}}
+          </ion-menu>
+        {{/notEqual}}
+        <div class="ion-page" id="main-content">
+          {{#notEqual url '/login'}}
+            <ion-header>
+              <ion-toolbar color="light">
+                <ion-buttons slot="start">
+                  <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <form id="search-form">
+                  <ion-searchbar
+                    debounce="500"
+                    placeholder="Search"
+                    id="search_games"
+                  ></ion-searchbar>
+                </form>
+              </ion-toolbar>
+            </ion-header>
+          {{/notEqual}}
+          <ion-content color="light" class="ion-padding">
+            {{{body}}}
+          </ion-content>
+        </div>
+      </ion-split-pane>
+    </ion-app>
+    <script src="/js/search.js"></script>
+  </body>
 </html>

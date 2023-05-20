@@ -1,0 +1,23 @@
+<div class="row align-center mb-5">
+  <h1>Tags</h1>
+  <ion-grid>
+    <ion-row>
+      {{#each tags as |tag|}}
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+          <a href="/tags/{{tag.id}}">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Game Count: {{tag.games_count}}</ion-card-title>
+                <ion-card-subtitle>{{tag.name}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <img src={{tag.image_background}} alt={{tag.slug}} />
+                {{tag.description}}
+              </ion-card-content>
+            </ion-card>
+          </a>
+        </ion-col>
+      {{/each}}
+    </ion-row>
+  </ion-grid>
+</div>

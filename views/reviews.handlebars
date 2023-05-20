@@ -1,0 +1,23 @@
+<div class="row align-center mb-5">
+  <h1>Reviews by {{reviews.[0].user.username}}</h1>
+  <ion-grid>
+    <ion-row>
+      {{#each reviews as |review|}}
+        <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="4">
+          <a href="/games/{{review.game_id}}">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>{{review.game.title}}</ion-card-title>
+                <ion-card-subtitle>{{review.date_created}}</ion-card-subtitle>
+                <ion-card-subtitle>Rating: {{review.rating}}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                {{review.description}}
+              </ion-card-content>
+            </ion-card>
+          </a>
+        </ion-col>
+      {{/each}}
+    </ion-row>
+  </ion-grid>
+</div>
