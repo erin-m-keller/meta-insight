@@ -22,7 +22,7 @@
 ![sequelize](https://img.shields.io/badge/-Sequelize-61DAFB?color=green&style=flat)
 ![mySql](https://img.shields.io/badge/-MySQL-61DAFB?color=blue&style=flat)
 ![handlebars](https://img.shields.io/badge/-Handlebars-61DAFB?color=indigo&style=flat)
-![bootstrap](https://img.shields.io/badge/-Bootstrap-61DAFB?color=violet&style=flat)
+![ionic](https://img.shields.io/badge/-Ionic-61DAFB?color=violet&style=flat)
 ![heroku](https://img.shields.io/badge/-Heroku-61DAFB?color=purple&style=flat)
 ![html](https://img.shields.io/badge/-HTML-61DAFB?color=red&style=flat)
 ![css](https://img.shields.io/badge/-CSS-61DAFB?color=orange&style=flat)
@@ -89,6 +89,7 @@
   [node-fetch](https://www.npmjs.com/package/node-fetch)  
   [moment](https://www.npmjs.com/package/moment)  
   [sequelize](https://www.npmjs.com/package/sequelize)  
+  [ionic](https://ionicframework.com/)  
   
   ## License 
   [![MIT license](https://img.shields.io/badge/License-MIT-purple.svg)](https://lbesson.mit-license.org/)
