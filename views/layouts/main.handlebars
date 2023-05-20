@@ -136,8 +136,14 @@
               <ion-toolbar color="light">
                 <ion-buttons slot="start">
                   <ion-menu-button></ion-menu-button>
-                  <ion-title>Meta-Insight</ion-title>
                 </ion-buttons>
+                <form id="search-form">
+                  <ion-searchbar
+                    debounce="500"
+                    placeholder="Search"
+                    id="search_games"
+                  ></ion-searchbar>
+                </form>
               </ion-toolbar>
             </ion-header>
           {{/notEqual}}
@@ -147,6 +153,6 @@
         </div>
       </ion-split-pane>
     </ion-app>
+    <script src="/js/search.js"></script>
   </body>
-
 </html>

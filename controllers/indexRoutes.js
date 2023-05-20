@@ -267,6 +267,25 @@ router.get("/tags/:id", async (req, res) => {
   }
 });
 
+router.get("/search/:search", async (req, res) => {
+  // search route
+  try {
+    const searchData = await axios.get(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.params.search}&page_size=10`
+    );
+    const search = searchData.data.results;
+    res.render("search", {
+      // render games.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      searchTerm: req.params.search, // Pass the search term to the template
+      games: search, // Pass the fetched search to the template
+    });
+  } catch (err) {
+    res.status(500).json(err); // return error
+  }
+});
+
 router.get("/reviews", async (req, res) => {
   // reviews route
   try {
@@ -275,7 +294,7 @@ router.get("/reviews", async (req, res) => {
       ),
       reviews = response.data.results;
     res.render("reviews", {
-      // render games.handlebars
+      // render reviews.handlebars
       logged_in: req.session.logged_in,
       url: req.url,
       reviews: reviews, // Pass the fetched reviews to the templat
