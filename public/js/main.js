@@ -17,14 +17,18 @@ function clearTxtArea(event) {
  * to any game they are currently
  * viewing
  */
-const addReview = async (event,gameId,userId,rating) => {
+const addReview = async (event) => {
   // prevent default behavior
   event.preventDefault();
   // initialize variables
   const ratingToast = document.querySelector('.rating-err'),
         reviewToast = document.querySelector('.review-err'),
-        reviewContent = document.querySelector('#review-content');
-  if (!rating) {
+        reviewContent = document.querySelector('#review-content'),
+        gameId = document.getElementById("game-id").value,
+        userId = document.getElementById("user-id").value,
+        gameName = document.getElementById("game-name").value,
+        reviewRating = document.getElementById("review-rating").value;
+  if (!reviewRating) {
     ratingToast.isOpen = true;
     return;
   }
@@ -32,37 +36,34 @@ const addReview = async (event,gameId,userId,rating) => {
     reviewToast.isOpen = true;
     return;
   }
-  // if all elements have a value
-  if (reviewContent.value && gameId && userId && rating) {
-    // the response received from the POST request
-    const response = await fetch('/api/review/add', {
-      method: 'POST',
-      body: JSON.stringify({ "description": reviewContent.value, "user_id": userId, "game_id": gameId, "rating": rating }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // the response received from the POST request
+  const response = await fetch('/api/review/add', {
+    method: 'POST',
+    body: JSON.stringify({ "description": reviewContent.value, "user_id": userId, "game_id": gameId, "rating": reviewRating, "title": gameName }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  // if reponse ok
+  if (response.ok) {
+    // fetch the updated comments for the specific post
+    const reviewsResponse = await fetch(`/api/review/getReviews/${gameId}`);
     // if reponse ok
-    if (response.ok) {
-      // fetch the updated comments for the specific post
-      const reviewsResponse = await fetch(`/api/review/getReviews/${gameId}`);
-      // if reponse ok
-      if (reviewsResponse.ok) {
-        // initialize variables
-        const reviewsData = await reviewsResponse.json();
-        // update the reviews section with the recently added reviews
-       updateReviews(reviewsData);
-       clearTxtArea(event);
-      }
-      // else if response is not ok
-      else {
-        // alert prompt with response status text
-        alert(reviewsResponse.statusText);
-      }
+    if (reviewsResponse.ok) {
+      // initialize variables
+      const reviewsData = await reviewsResponse.json();
+      // update the reviews section with the recently added reviews
+      updateReviews(reviewsData);
+      clearTxtArea(event);
     }
     // else if response is not ok
     else {
       // alert prompt with response status text
-      alert(response.statusText);
+      alert(reviewsResponse.statusText);
     }
+  }
+  // else if response is not ok
+  else {
+    // alert prompt with response status text
+    alert(response.statusText);
   }
 };
 
@@ -126,14 +127,3 @@ const updateReviews = (reviewsData) => {
     reviewSection.appendChild(reviewElement);
   });
 };
-
-// event listeners - on form submit
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('review-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const gameId = document.getElementById("game-id").value,
-          loggedInId = document.getElementById("user-id").value,
-          reviewRating = document.getElementById("review-rating").value;
-    addReview(event, gameId, loggedInId, reviewRating);
-  });
-});
