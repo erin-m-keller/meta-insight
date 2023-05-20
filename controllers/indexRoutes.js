@@ -1,7 +1,7 @@
 const router = require("express").Router(),
   axios = require("axios"),
   { User, Review, Game } = require("../models"),
-  withAuth = require('../utils/auth');
+  withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
@@ -285,7 +285,7 @@ router.get("/reviews/:id", withAuth, async (req, res) => {
         {
           model: User, // Include User model to retrieve title
           attributes: ["username"], // Return the username attribute
-        }
+        },
       ],
     });
     // transform post data into javascript object
@@ -298,6 +298,25 @@ router.get("/reviews/:id", withAuth, async (req, res) => {
     });
   } catch (err) {
     // catch errors
+    res.status(500).json(err); // return error
+  }
+});
+
+router.get("/search/:search", async (req, res) => {
+  // search route
+  try {
+    const searchData = await axios.get(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${req.params.search}&page_size=10`
+    );
+    const search = searchData.data.results;
+    res.render("search", {
+      // render games.handlebars
+      logged_in: req.session.logged_in,
+      url: req.url,
+      searchTerm: req.params.search, // Pass the search term to the template
+      games: search, // Pass the fetched search to the template
+    });
+  } catch (err) {
     res.status(500).json(err); // return error
   }
 });
