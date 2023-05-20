@@ -1,10 +1,10 @@
 -- Drop database if it exists
-DROP DATABASE IF EXISTS `meta_db`;
+DROP DATABASE IF EXISTS `ng6kmk5cmyifvp6g`;
 
 -- Create database
-CREATE DATABASE meta_db;
+CREATE DATABASE ng6kmk5cmyifvp6g;
 
-USE meta_db;
+USE ng6kmk5cmyifvp6g;
 
 CREATE TABLE IF NOT EXISTS `user` (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
