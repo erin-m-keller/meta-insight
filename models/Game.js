@@ -10,7 +10,11 @@ Game.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: false,
-    }
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,

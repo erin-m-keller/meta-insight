@@ -11,7 +11,8 @@ const router = require('express').Router(),
       const foundGame = await Game.findByPk(req.body.game_id);
       if (!foundGame) {
         await Game.create({
-          id: req.body.game_id
+          id: req.body.game_id,
+          title: req.body.title
         });
       }
       const newReview = await Review.create({

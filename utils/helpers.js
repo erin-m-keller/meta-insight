@@ -21,7 +21,21 @@ module.exports = {
   },
   // determines if side link is currently active
   isActive: function(url,path) {
-    return (url === path) ? false : true;
+    if (url.includes("reviews") && path === "/reviews") {
+      return false;
+    } else if (url.includes("games") && path === "/games") {
+      return false;
+    } else if (url.includes("platforms") && path === "/platforms") {
+      return false;
+    } else if (url.includes("genres") && path === "/genres") {
+      return false;
+    } else if (url.includes("publishers") && path === "/publishers") {
+      return false;
+    } else if (url.includes("tags") && path === "/tags") {
+      return false;
+    } else {
+      return (url === path) ? false : true;
+    }
   },
   // determines if path does not equal a certain value
   notEqual: function(a, b, options) {
