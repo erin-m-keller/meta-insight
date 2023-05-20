@@ -34,8 +34,8 @@
               </ion-item-divider>
               {{#if logged_in}}
                 <ion-button 
-                  href="/reviews" 
-                  {{#if (isActive '/reviews' url)}}
+                  href="/reviews/{{logged_in_id}}" 
+                  {{#if (isActive url '/reviews')}}
                     color="primary"
                     fill="clear"
                   {{else}}
@@ -59,7 +59,7 @@
               </ion-item-divider>
               <ion-button 
                 href="/" 
-                {{#if (isActive '/' url)}}
+                {{#if (isActive url '/')}}
                 color="primary"
                 fill="clear"
                 {{else}}
@@ -68,7 +68,7 @@
                 expand="block">Home</ion-button>
               <ion-button
                 href="/games"
-                {{#if (isActive '/games' url)}}
+                {{#if (isActive url '/games')}}
                 color="primary"
                 fill="clear"
                 {{else}}
@@ -78,7 +78,7 @@
               >Games</ion-button>
               <ion-button
                 href="/platforms"
-                {{#if (isActive '/platforms' url)}}
+                {{#if (isActive url '/platforms')}}
                 color="primary"
                 fill="clear"
                 {{else}}
@@ -88,7 +88,7 @@
               >Platforms</ion-button>
               <ion-button
                 href="/genres"
-                {{#if (isActive '/genres' url)}}
+                {{#if (isActive url '/genres')}}
                 color="primary"
                 fill="clear"
                 {{else}}
@@ -98,7 +98,7 @@
               >Genres</ion-button>
               <ion-button
                 href="/publishers"
-                {{#if (isActive '/publishers' url)}}
+                {{#if (isActive url '/publishers')}}
                 color="primary"
                 fill="clear"
                 {{else}}
@@ -108,7 +108,7 @@
               >Publishers</ion-button>
               <ion-button 
               href="/tags" 
-              {{#if (isActive '/tags' url)}}
+              {{#if (isActive url '/tags')}}
               color="primary"
                 fill="clear"
                 {{else}}

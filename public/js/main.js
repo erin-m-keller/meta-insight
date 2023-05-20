@@ -18,7 +18,6 @@ function clearTxtArea(event) {
  * viewing
  */
 const addReview = async (event,gameId,userId,rating) => {
-  console.log("rating: " + rating);
   // prevent default behavior
   event.preventDefault();
   // initialize variables
