@@ -1,5 +1,6 @@
 <input type="hidden" id="game-id" name="game-id" value="{{game.id}}" />
 <input type="hidden" id="user-id" name="user-id" value="{{logged_in_id}}" />
+<input type="hidden" id="game-name" name="game-name" value="{{game.name}}" />
 <div class="row align-center mb-5">
     <p><strong>Details</strong></p>
     <ion-card>
@@ -16,7 +17,7 @@
     <div>
         {{#if logged_in}}
             <h2>Leave a Review</h2>
-            <form id="review-form">
+            <form>
                 <ion-list>
                     <ion-item>
                         <ion-select id="review-rating" color="light" label="Select rating" placeholder="Select rating">
@@ -31,7 +32,7 @@
                         <ion-label position="floating">Review</ion-label>
                         <ion-textarea name="review" rows="4" id="review-content"></ion-textarea>
                     </ion-item>
-                    <ion-button expand="full" color="light" class="review-btn" type="submit">Submit</ion-button>
+                    <ion-button expand="full" color="light" class="review-btn" onclick="addReview(event)">Submit</ion-button>
                 </ion-list>
             </form>
         {{else}}

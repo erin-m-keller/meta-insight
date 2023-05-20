@@ -1,0 +1,4 @@
+Connect to jaws db:
+mysql -h qao3ibsa7hhgecbv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -u hs102ozcsvytvgxv -p -D ng6kmk5cmyifvp6g -P 3306
+
+pass: x04ehbggew6wxhu3
