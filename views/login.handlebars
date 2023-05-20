@@ -1,6 +1,7 @@
 <ion-tabs>
   <ion-tab tab="login">
     <form class="login-form">
+        <img src="/images/title.svg" alt="Meta Insight Logo" />
         <ion-card>
             <ion-card-header>
                 <ion-card-title>Login</ion-card-title>
@@ -13,9 +14,7 @@
                     <ion-item>
                         <ion-input label="Password" type="password" placeholder="Enter password" id="login-password" required></ion-input>
                     </ion-item>
-                    <ion-item>
-                        <ion-button type="submit">Login</ion-button>
-                    </ion-item>
+                    <ion-button expand="full" class="review-btn" color="light" type="submit">Login</ion-button>
                 </ion-list>
                 <ion-toast class="login-email-err" duration="5000" message="Email is not registered. Please sign-up."></ion-toast>
                 <ion-toast class="login-pass-err" duration="5000" message="Incorrect password."></ion-toast>
@@ -25,6 +24,7 @@
   </ion-tab>
   <ion-tab tab="sign-up">
     <form class="signup-form">
+        <img src="/images/title.svg" alt="Meta Insight Logo" />
         <ion-card>
             <ion-card-header>
                 <ion-card-title>Sign-Up</ion-card-title>
@@ -40,9 +40,7 @@
                     <ion-item>
                     <ion-input label="Password" type="password" placeholder="Enter password" id="signup-password" required></ion-input>
                     </ion-item>
-                    <ion-item>
-                    <ion-button type="submit">Sign-Up</ion-button>
-                    </ion-item>
+                    <ion-button expand="full" class="review-btn" color="light" type="submit">Sign-Up</ion-button>
                 </ion-list>
                 <ion-toast class="signup-email-err" duration="5000" message="Email is already registered. Please login."></ion-toast>
                 <ion-toast class="signup-pass-err" duration="5000" message="Password must be longer than 8 characters."></ion-toast>
@@ -50,7 +48,7 @@
         </ion-card>
     </form>
   </ion-tab>
-  <ion-tab-bar slot="top">
+  <ion-tab-bar slot="top" class="login-header" color="dark">
     <ion-tab-button href="/">
       Home
     </ion-tab-button>

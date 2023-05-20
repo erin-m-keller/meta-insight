@@ -17,18 +17,27 @@ function clearTxtArea(event) {
  * to any game they are currently
  * viewing
  */
-const addReview = async (event,gameId,userId,gameTitle) => {
+const addReview = async (event,gameId,userId,rating) => {
   // prevent default behavior
   event.preventDefault();
   // initialize variables
-  const reviewContent = document.querySelector('#review-content').value;
-  
+  const ratingToast = document.querySelector('.rating-err'),
+        reviewToast = document.querySelector('.review-err'),
+        reviewContent = document.querySelector('#review-content');
+  if (!rating) {
+    ratingToast.isOpen = true;
+    return;
+  }
+  if (!reviewContent.value) {
+    reviewToast.isOpen = true;
+    return;
+  }
   // if all elements have a value
-  if (reviewContent && gameId && userId) {
+  if (reviewContent.value && gameId && userId && rating) {
     // the response received from the POST request
     const response = await fetch('/api/review/add', {
       method: 'POST',
-      body: JSON.stringify({ "description": reviewContent, "user_id": userId, "game_id": gameId, "title": gameTitle }),
+      body: JSON.stringify({ "description": reviewContent.value, "user_id": userId, "game_id": gameId, "rating": rating }),
       headers: { 'Content-Type': 'application/json' },
     });
     // if reponse ok
@@ -58,6 +67,35 @@ const addReview = async (event,gameId,userId,gameTitle) => {
 };
 
 /**
+ * @generateRating
+ * Rebuilds the ratings
+ */
+const generateRating = (rating) => {
+  let elem = rating,
+      stars = "";
+  switch(elem) {
+    case 1:
+      stars = "&#11088;";
+      break;
+    case 2:
+      stars = "&#11088;&#11088;";
+      break;
+    case 3:
+      stars = "&#11088;&#11088;&#11088;";
+      break;
+    case 4:
+      stars = "&#11088;&#11088;&#11088;&#11088;";
+      break;
+    case 5:
+      stars = "&#11088;&#11088;&#11088;&#11088;&#11088;";
+      break;
+    default:
+      // code block
+  }
+  return stars;
+}
+
+/**
  * @updateReviews
  * Rebuilds the reviews section when a user
  * adds a new review
@@ -78,6 +116,7 @@ const updateReviews = (reviewsData) => {
         <ion-icon name="person-circle-outline" class="ion-icon"></ion-icon>
         <ion-label>
             <div class="date-time"><small>${formattedDate}</small></div>
+            <div class="review-rating"><small>${generateRating(review.rating)}</small></div>
             <h2>${review.user.username}</h2>
             <p>${review.description}</p>
         </ion-label>
@@ -87,3 +126,14 @@ const updateReviews = (reviewsData) => {
     reviewSection.appendChild(reviewElement);
   });
 };
+
+// event listeners - on form submit
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('review-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const gameId = document.getElementById("game-id").value,
+          loggedInId = document.getElementById("user-id").value,
+          reviewRating = document.getElementById("review-rating").value;
+    addReview(event, gameId, loggedInId, reviewRating);
+  });
+});

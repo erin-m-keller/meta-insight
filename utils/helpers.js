@@ -43,5 +43,29 @@ module.exports = {
   },
   toJson: function (obj) {
       return JSON.stringify(obj, null, 3);
+  },
+  generateRating: function (rating) {
+    let elem = rating,
+        stars = "";
+    switch(elem) {
+      case 1:
+        stars = "&#11088;";
+        break;
+      case 2:
+        stars = "&#11088;&#11088;";
+        break;
+      case 3:
+        stars = "&#11088;&#11088;&#11088;";
+        break;
+      case 4:
+        stars = "&#11088;&#11088;&#11088;&#11088;";
+        break;
+      case 5:
+        stars = "&#11088;&#11088;&#11088;&#11088;&#11088;";
+        break;
+      default:
+        // code block
+    }
+    return stars;
   }
 };
