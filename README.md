@@ -75,7 +75,7 @@
 
   **Joshua Cavell**: Wireframe, indexRoutes, fetchRoutes, page views,colors, dark mode colors, Things here and there  
   **Dylan Wednieski**: API work, homepage handbars, bug fixes, testing, index, things here and there   
-  **Erin Keller**: Authentication/account creation, login/signup page, review functionality, my reviews dashboard page
+  **Erin Keller**: Authentication/account creation, login/signup page, review functionality, my reviews dashboard page, heroku deployment
 
   ## Outside Resources
 
