@@ -193,6 +193,10 @@ ion-item-divider {
   margin: 1em;
 }
 
+.dark {
+  color: #000;
+}
+
 @media all and (min-width: 768px) {
   .login-form,
   .signup-form {
