@@ -1,7 +1,7 @@
 // initialize variables
-const Game = require('./Game'),
-      Review = require('./Review'),
-      User = require('./User');
+const Game = require('./Game'), // import Game model
+      Review = require('./Review'), // import Review model
+      User = require('./User'); // import User model
 
 // User: one-to-many (user has many Reviews)
 User.hasMany(Review, {
