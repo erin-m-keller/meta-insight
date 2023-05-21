@@ -1,7 +1,7 @@
   # Meta Insight
   
   ## Description 
-  // TODO: add description
+  Meta-Insight is a social game review website, you can create an account, authenticate, view games, view reviews, submit your own reviews, and view a dashboard of all your current reviews.
   
   ## Table of Contents
   * [Technology Stack](#technology-stack)
@@ -44,7 +44,7 @@
   
   ## Installation 
 
-  ```md
+  ```node
     import schema.sql into MySQL Workbench
     npm install
     node seeds/seed.js
@@ -73,8 +73,7 @@
 
   **Joshua Cavell**: Wireframe, indexRoutes, fetchRoutes, page views,colors, dark mode colors, Things here and there  
   **Dylan Wedniswki**:   
-  **Erin Keller**:    
-  // Add Commit Testing require review
+  **Erin Keller**: Authentication/account creation, login/signup page, review functionality, my reviews dashboard page
 
   ## Outside Resources
 
