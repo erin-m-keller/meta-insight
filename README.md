@@ -39,7 +39,9 @@
 
   ## User Story
   ```md
-    TODO: Add User Story
+  As a user, I want to rate and review my favorite video games. I
+  also want to read what other people think and discover my next favorite video
+  game!
   ```
   
   ## Installation 
@@ -72,7 +74,7 @@
   ## The Team Tasks 
 
   **Joshua Cavell**: Wireframe, indexRoutes, fetchRoutes, page views,colors, dark mode colors, Things here and there  
-  **Dylan Wedniswki**:   
+  **Dylan Wednieski**: API work, homepage handbars, bug fixes, testing, index, things here and there   
   **Erin Keller**: Authentication/account creation, login/signup page, review functionality, my reviews dashboard page
 
   ## Outside Resources
