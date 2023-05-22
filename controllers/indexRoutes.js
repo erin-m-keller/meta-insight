@@ -63,6 +63,7 @@ router.get("/games", async (req, res) => {
     res.render("games", {
       // render games.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       games: games, // Pass the fetched games to the templat
     });
@@ -114,6 +115,7 @@ router.get("/platforms", async (req, res) => {
     res.render("platforms", {
       // render games.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       platforms: platforms, // Pass the fetched platforms to the templat
     });
@@ -136,6 +138,7 @@ router.get("/platforms/:id", async (req, res) => { // platforms route
     res.render("platformdetails", {
       // render platformdetails.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       platform: platform, // pass platform object to template
       games: games, // pass games array to template
@@ -155,6 +158,7 @@ router.get("/genres", async (req, res) => {
     res.render("genres", {
       // render games.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       genres: genres, // Pass the fetched genres to the templat
     });
@@ -177,6 +181,7 @@ router.get("/genres/:id", async (req, res) => { // genres route
     res.render("genredetails", {
       // render genredetails.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       genre: genre, // pass genre object to template
       games: games, // pass games array to template
@@ -196,6 +201,7 @@ router.get("/publishers", async (req, res) => {
     res.render("publishers", {
       // render games.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       publishers: publishers, // Pass the fetched publishers to the templat
     });
@@ -218,6 +224,7 @@ router.get("/publishers/:id", async (req, res) => { // publishers route
     res.render("publisherdetails", {
       // render publisherdetails.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       publisher: publisher, // pass publisher object to template
       games: games, // pass games array to template
@@ -237,6 +244,7 @@ router.get("/tags", async (req, res) => {
     res.render("tags", {
       // render games.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       tags: tags, // Pass the fetched tags to the templat
     });
@@ -259,6 +267,7 @@ router.get("/tags/:id", async (req, res) => { // tags route
     res.render("tagdetails", {
       // render tagdetails.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       tag: tag, // pass tag object to template
       games: games, // pass games array to template
@@ -293,6 +302,7 @@ router.get("/reviews/:id", withAuth, async (req, res) => {
     res.render("reviews", {
       // render reviews.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       reviews: reviews, // pass reviews array to template
     });
@@ -312,6 +322,7 @@ router.get("/search/:search", async (req, res) => {
     res.render("search", {
       // render games.handlebars
       logged_in: req.session.logged_in, // pass logged_in session variable
+      logged_in_id: req.session.logged_in_id, // pass logged_in_id session variable
       url: req.url, // pass url session variable
       searchTerm: req.params.search, // Pass the search term to the template
       games: search, // Pass the fetched search to the template
